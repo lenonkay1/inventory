@@ -1,10 +1,11 @@
 class Book:
-    def __init__(self, title, author, genre, price, quantity):
+    def __init__(self, title, author, genre, price, quantity, pages):
         self.title = title
         self.author = author
         self.genre = genre
         self.price = price
         self.quantity = quantity
+        self.pages = pages
 
 class BookstoreInventory:
     def __init__(self):
@@ -40,7 +41,7 @@ class BookstoreInventory:
     @staticmethod
     def display_books(books):
         for book in books:
-            print(f"Title: {book.title}, Author: {book.author}, Genre: {book.genre}, Price: {book.price}, Quantity: {book.quantity}")
+            print(f"Title: {book.title}, Author: {book.author}, Genre: {book.genre}, Price: {book.price}, Quantity: {book.quantity}, Pages: {book.pages}")
             
 def main():
     bookstore = BookstoreInventory()
@@ -62,13 +63,14 @@ def main():
             genre = input("Enter genre: ")
             price = float(input("Enter price: "))
             quantity = int(input("Enter quantity: "))
-            new_book = Book(title, author, genre, price, quantity)
+            pages = int(input("Enter number of pages: ")) 
+            new_book = Book(title, author, genre, price, quantity, pages)
             bookstore.add_book(new_book)
             
         elif choice == '2':
             sort_by = input("Sort by 'genre' or 'author': ").lower()
             bookstore.view_inventory(sort_by)
-            
+
         elif choice == '3':
             search_term = input("Enter search term: ")
             bookstore.search_books(search_term)
@@ -91,3 +93,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
